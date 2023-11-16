@@ -1,0 +1,87 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+   <!-- <style>
+        /* Add some basic styling for the weather app */
+      /*  body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #3498db;
+            color: white;
+            padding: 20px 0;
+            margin: 0;
+        }
+        #location-input {
+            width: 70%;
+            padding: 10px;
+        }
+        #fetch-button {
+            padding: 10px 20px;
+        }
+        #weather-info {
+            margin-top: 20px;
+        }*/
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <div>
+        <input type="text" id="location-input" placeholder="Enter a location">
+        <button id="fetch-button">Fetch Weather</button>
+    </div>
+    <div id="weather-info">
+        Weather data will be displayed here
+    </div>
+
+    <script>
+      /*  document.addEventListener("DOMContentLoaded", function() {
+            const locationInput = document.getElementById("location-input");
+            const fetchButton = document.getElementById("fetch-button");
+            const weatherInfo = document.getElementById("weather-info");
+
+            fetchButton.addEventListener("click", function() {
+                const location = locationInput.value.trim();
+                if (location !== "") {
+                    fetchWeatherData(location);
+                }
+            });
+
+            locationInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    fetchButton.click();
+                }
+            });
+
+            function fetchWeatherData(location) {
+                // Replace 'YOUR_API_KEY' with your Weatherstack API key
+                const apiKey = 'YOUR_API_KEY';
+                const apiUrl = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${location}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperature = data.current.temperature;
+                        const description = data.current.weather_descriptions[0];
+                        const weatherHTML = `
+                            <p>Temperature: ${temperature}°C</p>
+                            <p>Description: ${description}</p>
+                        `;
+                        weatherInfo.innerHTML = weatherHTML;
+                    })
+                    .catch(error => {
+                        weatherInfo.innerHTML = `<p>Error: ${error.message}</p>`;
+                    });
+            }
+        });*/
+    </script>
+</body>
+</html>
+-->

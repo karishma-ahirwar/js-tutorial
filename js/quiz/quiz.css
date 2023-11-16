@@ -1,0 +1,30 @@
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+#quiz-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+#options {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+#submit-btn {
+  padding: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}

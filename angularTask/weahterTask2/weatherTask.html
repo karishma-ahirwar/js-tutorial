@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मौसम ऐप</title>
+    <link rel="stylesheet" href="weatherTask.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="cityInput" value="pune" placeholder="Enter location">
+        <button id="fetchWeather" onclick="myFun()">Search</button>
+        <div id="weatherInfo">
+            <p id="city">indore</p>
+            <p id="temperature">33</p>
+            <p id="description">clouds</p>
+            <p id="error"></p>
+        </div>
+    </div>
+    <script src="weatherTask.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+<p id="number"></p>
+
+<script>
+var arr = ["a","b","c","d","a","b",1,2,3,4,2,6,7,4];
+    // console.log(arr);
+    // let a = new Set(arr);
+    // let arr2 = [...a];
+    // console.log(arr2(arr));
+
+    // write in filter()function-------
+    // output a,b,c,d
+  /*
+    var removeDuplicate = arr.filter((val,index)=>arr.indexOf(val)==index);
+    console.log(removeDuplicate);
+*/
+  /*  var remove = arr.indexOf("b");
+    console.log(remove);
+*/
+    // for(let i=0; i<arr.length;i++){
+    //     console.log(arr[i]);
+    // }
+    
+    // using foreach loop---------------
+// function removeDuplicates(array){
+//     let x = {};
+//     array.forEach(function(i) {
+//         if(!x[i]){
+//             x[i]= true;
+//         }
+//     });
+//     return Object.keys(x);
+// }
+// console.log(removeDuplicates(arr));
+
+// using map function use turnury op---------
+/*
+function removeDuplicates(array){
+    let a =[];
+    array.map(x =>!a.includes(x) ? a.push(x) : "");
+    return a;
+}
+console.log(removeDuplicates(arr));
+*/
+// using set Global object--------------
+/*
+function removeDuplicates (array){
+   return [...new Set(arr)];
+}
+console.log(removeDuplicates(arr));
+*/
+// using reduc function---------------
+/*function removeDuplicates(array){
+    return array.reduce((prev,current)=>{
+        console.log(prev,current);
+        if(!prev.includes(current)){
+            prev.push(current);
+        }
+        return prev;
+    },[])
+}
+console.log(removeDuplicates(arr));
+*/
+const plyar =[
+    {name : 'virat', age: 35,
+    teams: ["delhi","city"]
+},
+    {name : 'mesi', age: 36,
+    teams:["super King","hariyana"]
+},
+    {name : 'p.v.sandhu', age: 25 ,
+    teams : ["india","city"]
+},
+    {name : 'Rohit', age: 25 ,
+    teams : ["pinkcity","city"]
+},
+    
+];
+console.table(
+    // plyar.filter(plyar=>plyar.age<30);
+    plyar.filter(p=> p.teams.includes("city"))
+);
+
+// get object keys as an array
+//get object values as an array
+/*
+const person = {
+    firstname : "kaju",
+    lastname : "singh"
+};
+const keys = Object.keys(person);
+console.log(keys);
+const value = Object.values(person);
+console.log(value);
+*/
+// Sample array of objects
+let arrayOfObjects = [
+    { id: 1, value: 'apple' },
+    { id: 2, value: 'orange' },
+    { id: 3, value: 'banana' },
+    { id: 4, value: 'apple' },
+    { id: 5, value: 'grape' },
+    { id: 6, value: 'orange' }
+];
+
+// Find duplicates based on the 'value' property
+let duplicates = arrayOfObjects.filter((obj, index, array) => {
+    return array.slice(index + 1).some(item => item.value === obj.value);
+});
+
+console.log(duplicates);
+
+    </script>
