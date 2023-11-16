@@ -6,13 +6,18 @@
   <link rel="stylesheet" href="quiz.css">
   <title>Quiz App</title>
 </head>
-<body>
-  <div id="quiz-container">
-    <h1 id="question"></h1>
-    <ul id="options" type="radio"></ul>
-    <button id="submit-btn">Submit</button>
-    <div id="result"></div>
+<body><div id="quiz-container">
+  <h2 class="head">Quiz App</h2 class="head">
+  <div id="question-container" class="question"></div>
+  <div id="options-container" class="options"></div>
+  <div class="score">
+    <h2 class="showScore"></h2>
+  <button onclick="nextQuestion()">Next</button>
+</div>
+  <div id="feedback">
+    <button onclick="Feedbakbtn()">feedback</button>
   </div>
+</div>
   <script src="quiz.js"></script>
 </body>
 </html>

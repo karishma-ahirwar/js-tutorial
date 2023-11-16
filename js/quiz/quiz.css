@@ -1,30 +1,52 @@
+/* quiz.css */
+
 body {
-  font-family: 'Arial', sans-serif;
-  text-align: center;
-  margin: 20px;
+  background-color: rgb(7,46,46);
+  font-family: Arial, sans-serif;
+  /* padding: 11px; */
+  /* margin: 20px; */
 }
 
 #quiz-container {
-  max-width: 600px;
-  margin: auto;
+  max-width: 500px;
+  margin: 0 auto;background-color: #fff;
+}
+.head{
+  text-align: center;
+}
+.question {
+  margin-bottom: 10px;
 }
 
-#options {
-  list-style: none;
-  padding: 0;
+.options {
+  margin-bottom: 20px;
 }
 
-li {
-  margin: 10px 0;
-}
-
-#submit-btn {
-  padding: 10px;
+/* .score {
+  text-align: center;
   margin-top: 20px;
+} */
+
+.showScore {
+  color: #333;
+}
+
+.score{
+  text-align: center;
+  padding: 11px;
+}
+#feedback{
+  padding: 11px; 
+}
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-#result {
-  margin-top: 20px;
-  font-weight: bold;
+button:hover {
+  background-color: #45a049;
 }

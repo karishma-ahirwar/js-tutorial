@@ -1,72 +1,106 @@
-document.addEventListener('DOMContentLoaded', init);
-
 const quizQuestions = [
   {
-    question: "What is the capital of France?",
-    options: ["London", "Berlin", "Paris", "Madrid"],
-    correctAnswer: "Paris"
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Paris", "Madrid", "Rome"],
+    "correctAnswer": "Paris"
   },
   {
-    question: "What is the largest planet in our solar system?",
-    options: ["Mars", "Venus", "Jupiter", "Saturn"],
-    correctAnswer: "Jupiter"
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Mars", "Jupiter", "Venus", "Saturn"],
+    "correctAnswer": "Mars"
   },
   {
-    question: "Which programming language is commonly used for web development?",
-    options: ["Python", "Java", "JavaScript", "C++"],
-    correctAnswer: "JavaScript"
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+    "correctAnswer": "William Shakespeare"
   }
 ];
 
 let currentQuestion = 0;
-let userResponses = [];
+let userAnswers = [];
+let timer;
 
-function init() {
-  showQuestion();
-  document.getElementById('submit-btn').addEventListener('click', submitAnswer);
-}
+function displayQuestion() {
+  const questionContainer = document.getElementById("question-container");
+  const optionsContainer = document.getElementById("options-container");
 
-function showQuestion() {
-  const questionElement = document.getElementById('question');
-  const optionsElement = document.getElementById('options');
-  const currentQ = quizQuestions[currentQuestion];
+  questionContainer.textContent = quizQuestions[currentQuestion].question;
+  optionsContainer.innerHTML = "";
 
-  questionElement.textContent = currentQ.question;
+  quizQuestions[currentQuestion].options.forEach((option, index) => {
+    const radioBtn = document.createElement("input");
+    radioBtn.type = "radio";
+    radioBtn.name = "answer";
+    radioBtn.value = option;
+    radioBtn.addEventListener("change", () => userAnswers[currentQuestion] = option);
 
-  optionsElement.innerHTML = '';
-  currentQ.options.forEach((option, index) => {
-    const li = document.createElement('li');
-    li.textContent = option;
-    li.addEventListener('click', () => selectOption(index));
-    optionsElement.appendChild(li);
+    const label = document.createElement("label");
+    label.textContent = option;
+
+    optionsContainer.appendChild(radioBtn);
+    optionsContainer.appendChild(label);
+    optionsContainer.appendChild(document.createElement("br"));
+  });
+
+  startTimer(10).then(() => {
+    userAnswers[currentQuestion] = null; // Timeout, mark as unanswered
+    nextQuestion();
   });
 }
 
-function selectOption(index) {
-  userResponses[currentQuestion] = quizQuestions[currentQuestion].options[index];
+function startTimer(seconds) {
+  return new Promise((resolve) => {
+    let timeLeft = seconds;
+
+    const countdown = () => {
+      document.getElementById("feedback").textContent = `Time left: ${timeLeft} seconds`;
+      timeLeft--;
+
+      if (timeLeft < 0) {
+        clearTimeout(timer);
+        resolve(); // Resolve the promise when the timer reaches 0
+      } else {
+        timer = setTimeout(countdown, 1000);
+      }
+    };
+
+    countdown();
+  });
 }
 
-function submitAnswer() {
-  currentQuestion++;
+function nextQuestion() {
+  clearTimeout(timer);
 
-  if (currentQuestion < quizQuestions.length) {
-    showQuestion();
+  if (currentQuestion < quizQuestions.length - 1) {
+    currentQuestion++;
+    displayQuestion();
   } else {
-    showResult();
+    displayScore();
   }
 }
 
-function showResult() {
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = `Your Score: ${calculateScore()} out of ${quizQuestions.length}`;
-}
+function displayScore() {
+  let correctAnswers = 0;
 
-function calculateScore() {
-  let score = 0;
   quizQuestions.forEach((question, index) => {
-    if (userResponses[index] === question.correctAnswer) {
-      score++;
+    if (userAnswers[index] === question.correctAnswer) {
+      correctAnswers++;
     }
   });
-  return score;
+
+  const feedbackContainer = document.getElementById("feedback");
+  feedbackContainer.innerHTML = `<h3>Quiz Completed!</h3><br/>You scored ${correctAnswers} out of ${quizQuestions.length} questions.`;
+  feedbackContainer.style.backgroundColor = "aqua";
+
+  // Optional: Provide feedback on each question
+  quizQuestions.forEach((question, index) => {
+    const result = document.createElement("p");
+    result.textContent = `Q${index + 1}: ${
+      userAnswers[index] === question.correctAnswer ? "Correct" : "Incorrect"
+      }`;
+    feedbackContainer.appendChild(result);
+  });
 }
+
+// Initial display
+displayQuestion();
